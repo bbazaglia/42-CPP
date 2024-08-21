@@ -27,13 +27,10 @@ void Harl::filter(std::string level) {
     switch (startLevel) {
         case DEBUG:
             (this->*complaints[DEBUG])();
-            break;
         case INFO:
             (this->*complaints[INFO])();
-            break;
         case WARNING:
             (this->*complaints[WARNING])();
-            break;
         case ERROR:
             (this->*complaints[ERROR])();
             break;
