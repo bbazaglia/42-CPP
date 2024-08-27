@@ -5,7 +5,7 @@ CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -Iinclude
 
 # Target executable
-NAME = fixed
+NAME = bsp
 
 # Include directory
 VPATH = src include
