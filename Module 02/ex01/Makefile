@@ -8,7 +8,7 @@ CFLAGS = -Wall -Werror -Wextra -std=c++98 -Iinclude
 NAME = fixed
 
 # Source files
-SRC = main.cpp Fixed.cpp Fixed.hpp
+SRC = main.cpp Fixed.cpp 
 
 # Object directory
 OBJ_DIR = obj

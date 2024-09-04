@@ -29,8 +29,8 @@ public:
     int toInt( void ) const;
 };
 
-// Define how to ouput an object of type Fixed to an output stream
-// The compiler does not know how to handle custom types with the << operator
+// By default, the << operator is defined for built-in types like int, float, std::string, etc. 
+// However, for user-defined types (like Fixed), the compiler does not know how to handle the << operator unless you explicitly define it.
 std::ostream& operator<<(std::ostream& os, const Fixed& fixed);
 
 #endif
