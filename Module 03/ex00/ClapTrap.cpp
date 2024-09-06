@@ -37,24 +37,26 @@ int ClapTrap::getHitPoints() const { return _hitPoints; }
 int ClapTrap::getEnergyPoints() const { return _energyPoints; }
 int ClapTrap::getAttackDamage() const { return _attackDamage; }
 
-
+// decrease the ClapTrap's energy points by 1 and attack the target
 void ClapTrap::attack(const std::string& target) {
-    if (_hitPoints > 0 && _energyPoints > 0 && _attackDamage > 0) {
+    if (_hitPoints > 0 && _energyPoints > 0) {
         std::cout << "ClapTrap " << _name << " attacks " << target << ", causing "
                   << _attackDamage << " points of damage!" << std::endl;
         --_energyPoints;
     } else {
         std::cout << "ClapTrap " << _name << " can't attack because "
-                  << (_hitPoints <= 0 ? "it has no hit points left!" :
-                      _energyPoints <= 0 ? "it has no energy points left!" :
-                      "attack damage can't be negative or zero!") << std::endl;
+                  << (_hitPoints <= 0 ? "it has no hit points left!" : 
+                      (_energyPoints <= 0 ? "it has no energy points left!" : "")) 
+                  << std::endl;
     }
 }
 
+// decrease the ClapTrap's hit points by the amount of damage it takes
 void ClapTrap::takeDamage(unsigned int amount) {
     if (_hitPoints > 0) {
         _hitPoints -= amount;
-        if (_hitPoints < 0) _hitPoints = 0;
+        if (_hitPoints < 0) 
+            _hitPoints = 0;
         std::cout << _name << " took " << amount << " points of damage! Remaining hit points: "
                   << _hitPoints << std::endl;
     } else {
@@ -62,6 +64,7 @@ void ClapTrap::takeDamage(unsigned int amount) {
     }
 }
 
+// increase the ClapTrap's hit points by the amount of healing it receives
 void ClapTrap::beRepaired(unsigned int amount) {
     if (_hitPoints > 0 && _energyPoints > 0) {
         _hitPoints += amount;
