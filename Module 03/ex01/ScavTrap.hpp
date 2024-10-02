@@ -1,31 +1,31 @@
-#ifndef SCAVTRAP_H
-#define SCAVTRAP_H
+#ifndef SCAVTRAP_HPP
+#define SCAVTRAP_HPP
 
 #include "ClapTrap.hpp"
-
-/* 
-**Base Class**: The class whose properties and methods are inherited.
-**Derived Class**: The class that inherits from the base class.
-
-Public Inheritance:
-Public members of the base class remain public in the derived class.
-Protected members of the base class remain protected in the derived class.
-Private members of the base class are not accessible in the derived class directly.
-
-Constructor and Destructor Order:
-**Constructor**: Base class constructor is called before the derived class constructor.
-**Destructor**: Derived class destructor is called before the base class destructor.*/
+#include <iostream>
 
 class ScavTrap : public ClapTrap {
 public:
-    ScavTrap()
-    ScavTrap(std::string name);
+    // Default constructor
+    ScavTrap();
+    
+    // Parametrized constructor
+    ScavTrap(const std::string& name);
+    
+    // Copy constructor
     ScavTrap(const ScavTrap& other);
+    
+    // Copy assignment operator
     ScavTrap& operator=(const ScavTrap& other);
+    
+    // Destructor
     ~ScavTrap();
 
+    // Override attack method
     void attack(const std::string& target);
+
+    // Special ability
     void guardGate();
 };
 
-#endif 
+#endif
