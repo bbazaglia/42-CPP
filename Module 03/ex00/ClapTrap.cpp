@@ -9,7 +9,7 @@ ClapTrap::ClapTrap(const std::string& name) : _name(name), _hitPoints(10), _ener
 }
 
 ClapTrap::ClapTrap(const ClapTrap& other) : _name(other._name), _hitPoints(other._hitPoints), _energyPoints(other._energyPoints), _attackDamage(other._attackDamage) {
-    std::cout << "ClapTrap copy constructor called." << std::endl;
+    std::cout << "ClapTrap copy constructor called. 👋" << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
