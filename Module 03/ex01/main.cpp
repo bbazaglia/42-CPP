@@ -1,46 +1,80 @@
 #include "ScavTrap.hpp"
 
-int main() {
-    std::cout << "Creating ScavTrap instances:" << std::endl;
-    ScavTrap Harry("Harry");
-    std::cout << std::endl;
-    ScavTrap Ron("Ron");
-    std::cout << std::endl;
-    ScavTrap Hermione("Hermione");
-    std::cout << std::endl;
-    ScavTrap HermioneCopy(Hermione);
-    std::cout << std::endl;
-    ScavTrap Hagrid;
-    Hagrid = Ron;
-    std::cout <<  "Change the name of the copy assigned to Ron to Hagrid..." << std::endl;
-    Hagrid.setName("Hagrid");
+int	main(void)
+{
+	std::cout << "TESTING CONSTRUCTORS:\n";
+	ScavTrap firstScavTrap("First");
+	ScavTrap secondScavTrap("Second");
+	ScavTrap thirdScavTrap(secondScavTrap);
+	ScavTrap fourthScavTrap;
+	std::cout << '\n';
 
-    std::cout << std::endl << "Values before assignment:" << std::endl;
-    std::cout << Harry.getName() << " has " << Harry.getHitPoints() << " hit points, " << Harry.getEnergyPoints() << " energy points and " << Harry.getAttackDamage() << " points of attack damage." << std::endl;
-    std::cout << Ron.getName() << " has " << Ron.getHitPoints() << " hit points, " << Ron.getEnergyPoints() << " energy points and " << Ron.getAttackDamage() << " points of attack damage." << std::endl;
-    std::cout << Hermione.getName() << " has " << Hermione.getHitPoints() << " hit points, " << Hermione.getEnergyPoints() << " energy points and " << Hermione.getAttackDamage() << " points of attack damage." << std::endl;
-    std::cout << HermioneCopy.getName() << " copy has " << HermioneCopy.getHitPoints() << " hit points, " << HermioneCopy.getEnergyPoints() << " energy points and " << HermioneCopy.getAttackDamage() << " points of attack damage." << std::endl;
-    std::cout << Hagrid.getName() << " has " << Hagrid.getHitPoints() << " hit points, " << Hagrid.getEnergyPoints() << " energy points and " << Hagrid.getAttackDamage() << " points of attack damage." << std::endl;
+	std::cout << "TESTING ASSIGNMENT OPERATOR:\n";
+	firstScavTrap.setHitPoints(42);
+	firstScavTrap.setEnergyPoints(42);
+	std::cout << "Before assignment:\n";
+	std::cout << "Name: " << fourthScavTrap.getName() << "\t" << "Name: " << firstScavTrap.getName() << '\n';
+	std::cout << "Hitpoints: " << fourthScavTrap.getHitPoints() << "\t\t\t" << "Hitpoints: " << firstScavTrap.getHitPoints() << '\n';
+	std::cout << "Energy Points: " << fourthScavTrap.getEnergyPoints() << "\t\t" << "Energy Points: " << firstScavTrap.getEnergyPoints() << '\n';
+	std::cout << "Attack Damage: " << fourthScavTrap.getAttackDamage() << "\t\t" << "Attack Damage: " << firstScavTrap.getAttackDamage() << '\n';
+	std::cout << '\n';
 
-    std::cout << std::endl << "Setting new values to " <<  Harry.getName() << " and the copy of " << HermioneCopy.getName()  << "..." << std::endl;
-    Harry.setName("Harry Potter");
-    Harry.setHitPoints(13);
-    Harry.setEnergyPoints(15);
-    Harry.setAttackDamage(3);
-    std::cout << std::endl;
-    HermioneCopy.setName("Hermione Granger");
-    HermioneCopy.setHitPoints(0);
-    HermioneCopy.setEnergyPoints(1);
-    HermioneCopy.setAttackDamage(5);
-    
-    std::cout << std::endl << "Let's start the attacks..." << std::endl;
-    Harry.attack("Voldemort");
-    Harry.guardGate();
-    HermioneCopy.guardGate();
-    HermioneCopy.setHitPoints(1);
-    HermioneCopy.attack("Bellatrix");
-    HermioneCopy.attack("Draco");
-    std::cout << std::endl;
+	fourthScavTrap = firstScavTrap;
+	std::cout << '\n';
 
-    return 0;
+	std::cout << "After assignment:\n";
+	std::cout << "Name: " << fourthScavTrap.getName() << "\t\t\t" << "Name: " << firstScavTrap.getName() << '\n';
+	std::cout << "Hitpoints: " << fourthScavTrap.getHitPoints() << "\t\t\t" << "Hitpoints: " << firstScavTrap.getHitPoints() << '\n';
+	std::cout << "Energy Points: " << fourthScavTrap.getEnergyPoints() << "\t\t" << "Energy Points: " << firstScavTrap.getEnergyPoints() << '\n';
+	std::cout << "Attack Damage: " << fourthScavTrap.getAttackDamage() << "\t\t" << "Attack Damage: " << firstScavTrap.getAttackDamage() << '\n';
+	std::cout << '\n';
+
+	std::cout << "INITIAL STATE:\n";
+	ScavTrap scavtrap("Scavy");
+	std::cout << '\n';
+    std::cout << "Name: " << scavtrap.getName() << '\n';
+    std::cout << "Hitpoints: " << scavtrap.getHitPoints() << '\n';
+    std::cout << "Energy Points: " << scavtrap.getEnergyPoints() << '\n';
+    std::cout << "Attack Damage: " << scavtrap.getAttackDamage() << '\n';
+	std::cout << '\n';
+
+	scavtrap.attack("Crappy");
+	scavtrap.takeDamage(5);
+	scavtrap.beRepaired(1);
+	scavtrap.guardGate();
+	std::cout << '\n';
+
+	std::cout << "CURRENT ATTRIBUTES:\n";
+	std::cout << scavtrap.getName() << " has " << scavtrap.getHitPoints() << " hitpoints\n";
+	std::cout << scavtrap.getName() << " has " << scavtrap.getEnergyPoints() << " energy points\n";
+	std::cout << '\n';
+
+	scavtrap.setEnergyPoints(0);
+	std::cout << "CURRENT ATTRIBUTES:\n";
+	std::cout << scavtrap.getName() << " has " << scavtrap.getHitPoints() << " hitpoints\n";
+	std::cout << scavtrap.getName() << " has " << scavtrap.getEnergyPoints() << " energy points\n";
+	std::cout << '\n';
+
+	scavtrap.attack("Jack");
+	scavtrap.takeDamage(5);
+	scavtrap.beRepaired(1);
+	scavtrap.guardGate();
+	std::cout << '\n';
+
+
+	scavtrap.setHitPoints(0);
+	scavtrap.setEnergyPoints(10);
+	std::cout << "CURRENT ATTRIBUTES:\n";
+	std::cout << scavtrap.getName() << " has " << scavtrap.getHitPoints() << " hitpoints\n";
+	std::cout << scavtrap.getName() << " has " << scavtrap.getEnergyPoints() << " energy points\n";
+	std::cout << '\n';
+	
+	scavtrap.attack("Jack");
+	scavtrap.takeDamage(5);
+	scavtrap.beRepaired(1);
+	scavtrap.guardGate();
+	std::cout << '\n';
+
+	std::cout << "TESTING DESTRUCTORS:\n";
+	return 0;
 }

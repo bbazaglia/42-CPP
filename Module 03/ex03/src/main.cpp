@@ -1,26 +1,86 @@
 #include "DiamondTrap.hpp"
 
-int main() {
-    // Create a DiamondTrap instance using the default constructor
-    DiamondTrap buzz;
-    buzz.setName("Lightyear");
-    std::cout << std::endl << "DiamondTrap 1 Name: " << buzz.getName() << std::endl;
-    buzz.whoAmI();
+int	main(void)
+{
+	std::cout << "TESTING CONSTRUCTORS:\n";
+	DiamondTrap firstDiamondTrap("First");
+	DiamondTrap secondDiamondTrap("Second");
+	DiamondTrap thirdDiamondTrap(secondDiamondTrap);
+	DiamondTrap fourthDiamondTrap;
+	std::cout << '\n';
 
-    // Create a DiamondTrap instance using the parameterized constructor
-    DiamondTrap woody("Sheriff");
-    std::cout << std::endl << "DiamondTrap 2 Name: " << woody.getName() << std::endl;
-    woody.whoAmI();
+	std::cout << "TESTING ASSIGNMENT OPERATOR:\n";
+	firstDiamondTrap.setHitPoints(42);
+	firstDiamondTrap.setEnergyPoints(42);
+	std::cout << "Before assignment:\n";
+	std::cout << "Name: " << fourthDiamondTrap.getName() << "\t" << "Name: " << firstDiamondTrap.getName() << '\n';
+	std::cout << "Hitpoints: " << fourthDiamondTrap.getHitPoints() << "\t\t\t" << "Hitpoints: " << firstDiamondTrap.getHitPoints() << '\n';
+	std::cout << "Energy Points: " << fourthDiamondTrap.getEnergyPoints() << "\t\t" << "Energy Points: " << firstDiamondTrap.getEnergyPoints() << '\n';
+	std::cout << "Attack Damage: " << fourthDiamondTrap.getAttackDamage() << "\t\t" << "Attack Damage: " << firstDiamondTrap.getAttackDamage() << '\n';
+	std::cout << '\n';
 
-    // Create a DiamondTrap instance using the copy constructor
-    DiamondTrap Jess(woody);
-    std::cout << std::endl << "DiamondTrap 3 Name (copied from woody): " << Jess.getName() << std::endl;
-    Jess.whoAmI();
+	fourthDiamondTrap = firstDiamondTrap;
+	std::cout << '\n';
 
-    // Use the assignment operator
-    buzz = woody;
-    std::cout << std::endl << "DiamondTrap 1 Name (after assignment from woody): " << buzz.getName() << std::endl;
-    buzz.whoAmI();
+	std::cout << "After assignment:\n";
+	std::cout << "Name: " << fourthDiamondTrap.getName() << "\t\t\t" << "Name: " << firstDiamondTrap.getName() << '\n';
+	std::cout << "Hitpoints: " << fourthDiamondTrap.getHitPoints() << "\t\t\t" << "Hitpoints: " << firstDiamondTrap.getHitPoints() << '\n';
+	std::cout << "Energy Points: " << fourthDiamondTrap.getEnergyPoints() << "\t\t" << "Energy Points: " << firstDiamondTrap.getEnergyPoints() << '\n';
+	std::cout << "Attack Damage: " << fourthDiamondTrap.getAttackDamage() << "\t\t" << "Attack Damage: " << firstDiamondTrap.getAttackDamage() << '\n';
+	std::cout << '\n';
 
-    std::cout << std::endl;
+	std::cout << "INITIAL STATE:\n";
+	DiamondTrap diamondtrap("Diddy");
+	std::cout << '\n';
+    std::cout << "Name: " << diamondtrap.getName() << '\n';
+    std::cout << "Hitpoints: " << diamondtrap.getHitPoints() << '\n';
+    std::cout << "Energy Points: " << diamondtrap.getEnergyPoints() << '\n';
+    std::cout << "Attack Damage: " << diamondtrap.getAttackDamage() << '\n';
+	std::cout << '\n';
+
+	diamondtrap.whoAmI();
+	diamondtrap.attack("Trappy");
+	diamondtrap.takeDamage(5);
+	diamondtrap.beRepaired(1);
+	diamondtrap.guardGate();
+	diamondtrap.highFivesGuys();
+	std::cout << '\n';
+
+	std::cout << "CURRENT ATTRIBUTES:\n";
+	std::cout << diamondtrap.getName() << " has " << diamondtrap.getHitPoints() << " hitpoints\n";
+	std::cout << diamondtrap.getName() << " has " << diamondtrap.getEnergyPoints() << " energy points\n";
+	std::cout << '\n';
+
+	diamondtrap.setEnergyPoints(0);
+	std::cout << "CURRENT ATTRIBUTES:\n";
+	std::cout << diamondtrap.getName() << " has " << diamondtrap.getHitPoints() << " hitpoints\n";
+	std::cout << diamondtrap.getName() << " has " << diamondtrap.getEnergyPoints() << " energy points\n";
+	std::cout << '\n';
+
+	diamondtrap.whoAmI();
+	diamondtrap.attack("Trappy");
+	diamondtrap.takeDamage(5);
+	diamondtrap.beRepaired(1);
+	diamondtrap.guardGate();
+	diamondtrap.highFivesGuys();
+	std::cout << '\n';
+
+
+	diamondtrap.setHitPoints(0);
+	diamondtrap.setEnergyPoints(10);
+	std::cout << "CURRENT ATTRIBUTES:\n";
+	std::cout << diamondtrap.getName() << " has " << diamondtrap.getHitPoints() << " hitpoints\n";
+	std::cout << diamondtrap.getName() << " has " << diamondtrap.getEnergyPoints() << " energy points\n";
+	std::cout << '\n';
+	
+	diamondtrap.whoAmI();
+	diamondtrap.attack("Trappy");
+	diamondtrap.takeDamage(5);
+	diamondtrap.beRepaired(1);
+	diamondtrap.guardGate();
+	diamondtrap.highFivesGuys();
+	std::cout << '\n';
+
+	std::cout << "TESTING DESTRUCTORS:\n";
+	return 0;
 }

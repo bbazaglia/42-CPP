@@ -5,7 +5,7 @@ CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 
 # Target executable
-NAME = ClapTrap
+NAME = ScavTrap
 
 # Source files
 SRC = main.cpp ClapTrap.cpp ScavTrap.cpp

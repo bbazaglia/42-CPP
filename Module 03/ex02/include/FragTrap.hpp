@@ -20,9 +20,6 @@ public:
     // Destructor
     ~FragTrap();
 
-    // Override attack method
-    void attack(const std::string& target);
-
     // Special ability
     void highFivesGuys();
 };
