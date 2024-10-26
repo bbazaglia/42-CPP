@@ -14,11 +14,13 @@ public:
     the destructor of the derived class will be called first, followed by the base class destructor.*/
     virtual ~Animal();
 
+    std::string getType() const;
     // dynamic dispatch: the correct version of the function will be called depending on the actual type of the object
-    virtual makeSound() const;
+    virtual void makeSound() const;
 
 protected:
-    std::string type;
+    // derives classes can directly access _type without needing a public setter
+    std::string _type;
 };
 
 #endif 

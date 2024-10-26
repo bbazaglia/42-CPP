@@ -1,48 +1,35 @@
-# Compiler
+NAME = polymorphism
+
 CC = c++
-
-# Compiler flags
-CFLAGS = -Wall -Werror -Wextra -std=c++98 I include
-
-# Target executable
-NAME = my_program
+CFLAGS = -std=c++98 -Wall -Werror -Wextra -Wshadow
+INCLUDES = -I include
 
 VPATH = src
-
-# Source files
-SRC = main.cpp utils.cpp
-
-# Object directory
+FILES = main.cpp \
+		Animal.cpp \
+		Cat.cpp \
+		Dog.cpp \
+		WrongAnimal.cpp \
+		WrongCat.cpp
+		
+OBJS = $(FILES:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR = obj
 
-# Object files
-OBJ = $(SRC:.cpp=$(OBJ_DIR)/%.o)
-
-# Default target
 all: $(NAME)
 
-# Link the executable
-$(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) -o $@ $^
-	@echo "Executable created: $(NAME)"
-
-# Compile source files into object files
 $(OBJ_DIR)/%.o: %.cpp
-	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CFLAGS) -c $< -o $@
-	@echo "Compiled: $<"
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@ && printf "Compiling: $(notdir $<)\n"
 
-# Clean object files
+$(NAME): $(OBJS)
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+
 clean:
 	@rm -rf $(OBJ_DIR)
-	@echo "Cleaned object files"
 
-# Clean object files and executable
 fclean: clean
-	@rm -f $(NAME)
-	@echo "Cleaned executable"
+	@rm -rf $(NAME)
 
-# Rebuild everything
 re: fclean all
 
 .PHONY: all clean fclean re
