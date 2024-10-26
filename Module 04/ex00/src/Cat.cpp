@@ -3,7 +3,7 @@
 Cat::Cat() {
 
     _type = "Cat";
-    std::cout << "Cat: Default Constructor called." << std::endl;
+    std::cout << "Cat: Default Constructor called. 🐱" << std::endl;
 }
 
 Cat::Cat(const Cat& copy) : Animal(copy) {
@@ -28,5 +28,5 @@ Cat::~Cat() {
 
 void Cat::makeSound() const {
 
-    std::cout << "Cat: Meow Meow Meow" << std::endl;
+    std::cout << "Meow Meow" << std::endl;
 }

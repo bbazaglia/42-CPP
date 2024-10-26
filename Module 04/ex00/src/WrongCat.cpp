@@ -1,7 +1,7 @@
 #include "WrongCat.hpp"
 
 WrongCat::WrongCat() : _type("WrongCat") {
-    std::cout << "WrongCat: Default Constructor called." << std::endl;
+    std::cout << "WrongCat: Default Constructor called. 🐄" << std::endl;
 }
 
 WrongCat::WrongCat(const WrongCat& copy) : _type(copy._type) {
@@ -21,5 +21,5 @@ WrongCat::~WrongCat() {
 }
 
 void WrongCat::makeSound() const {
-    std::cout << "Some WrongCat sound" << std::endl;
+    std::cout << "Moo Moo" << std::endl;
 }

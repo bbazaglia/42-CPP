@@ -3,7 +3,7 @@
 Dog::Dog(void) {
 
     _type = "Dog";
-    std::cout << "Dog: Default Constructor called." << std::endl;
+    std::cout << "Dog: Default Constructor called. 🐶" << std::endl;
 }
 
 Dog::Dog(const Dog& copy) : Animal(copy) {
@@ -29,5 +29,5 @@ Dog::~Dog(void) {
 
 void Dog::makeSound(void) const {
 
-    std::cout << "Dog: Woof Woof!" << std::endl;
+    std::cout << "Woof Woof!" << std::endl;
 }
