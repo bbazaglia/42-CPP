@@ -1,15 +1,17 @@
 #include "Cat.hpp"
 #include "Dog.hpp"
 #include "WrongCat.hpp"
+#include "Brain.hpp"
 
 int	main(void)
 {
     std::cout << "Testing with default Animal constructors... 🛠️" << std::endl;
 
+    /* cannot instantiate abstract class
     const Animal *meta = new Animal();
     std::cout << meta->getType() << ": ";
     meta->makeSound();
-    std::cout << std::endl;
+    std::cout << std::endl;*/
 
     const Animal *puppie = new Dog();
     std::cout << puppie->getType() << ": ";
@@ -61,7 +63,6 @@ int	main(void)
 
     std::cout << "Calling destructors 💣" << std::endl;
 
-    delete meta;
     delete puppie;
     delete kitty;
     delete tom;
@@ -74,23 +75,34 @@ int	main(void)
 }
 
 
-/* 
-int main() {
-    Animal* animals[3]; // Array of pointers to Animal
+// int main() {
+//     Brain original;
+//     original.setIdea(0, "Original idea 1");
+//     original.setIdea(1, "Original idea 2");
 
-    animals[0] = new Animal();
-    animals[1] = new Cat();
-    animals[2] = new Dog();
+//     Brain copy(original); // Calls the copy constructor
 
-    for (int i = 0; i < 3; ++i) {
-        std::cout << animals[i]->getType() << ": ";
-        animals[i]->makeSound(); // Dynamic dispatch happens here
-    }
+//     std::cout << "Original ideas:" << std::endl;
+//     std::cout << "Idea 0: " << original.getIdea(0) << std::endl;
+//     std::cout << "Idea 1: " << original.getIdea(1) << std::endl;
 
-    for (int i = 0; i < 3; ++i) {
-        delete animals[i];
-    }
+//     std::cout << "Copy ideas:" << std::endl;
+//     std::cout << "Idea 0: " << copy.getIdea(0) << std::endl;
+//     std::cout << "Idea 1: " << copy.getIdea(1) << std::endl;
 
-    return 0;
-}
-*/ 
+//     // Modify the copy's ideas
+//     copy.setIdea(0, "Modified idea 1");
+//     copy.setIdea(1, "Modified idea 2");
+
+//     std::cout << "After modifying the copy:" << std::endl;
+//     std::cout << "Original ideas:" << std::endl;
+//     std::cout << "Idea 0: " << original.getIdea(0) << std::endl;
+//     std::cout << "Idea 1: " << original.getIdea(1) << std::endl;
+
+//     std::cout << "Copy ideas:" << std::endl;
+//     std::cout << "Idea 0: " << copy.getIdea(0) << std::endl;
+//     std::cout << "Idea 1: " << copy.getIdea(1) << std::endl;
+
+//     return 0;
+// }
+
