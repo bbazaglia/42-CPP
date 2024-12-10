@@ -6,7 +6,7 @@
 #include <string>
 #include "AForm.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat {
 public:
@@ -25,12 +25,12 @@ public:
     void incrementGrade();
     void decrementGrade();
     void signForm(Form &form);
+    void executeForm(AForm const & form);
 
     // Exceptions
     class GradeTooHighException : public std::exception {
     public:
         virtual const char* what() const throw();
-
     };
 
     class GradeTooLowException : public std::exception {
@@ -45,4 +45,4 @@ private:
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
 
-#endif // BUREAUCRAT_HPP
+#endif 
