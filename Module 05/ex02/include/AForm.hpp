@@ -11,7 +11,7 @@ class AForm {
 public:
     // Constructors and Destructor
     AForm();
-    AForm(const std::string& name, int gradeToSign, int gradeToExecute);
+    AForm(const std::string name, int gradeToSign, int gradeToExecute, const std::string target);
     AForm(const AForm& other);
     AForm& operator=(const AForm& other);
     ~AForm();
@@ -53,7 +53,7 @@ private:
     std::string const _target;
 };
 
-std::ostream& operator<<(std::ostream& os, const Form& form);
+std::ostream& operator<<(std::ostream& os, const AForm& form);
 
 #endif 
 

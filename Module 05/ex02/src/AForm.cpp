@@ -7,7 +7,7 @@ AForm::AForm() : _name("Default"), _isSigned(false), _gradeToSign(150), _gradeTo
 // Parameterized constructor
 AForm::AForm(std::string const name, int gradeToSign, int gradeToExecute, std::string const target)
 	:	_name(name),
-		_signed(false),
+		_isSigned(false),
 		_gradeToSign(gradeToSign),
 		_gradeToExecute(gradeToExecute),
 		_target(target) {
@@ -22,7 +22,7 @@ AForm::AForm(std::string const name, int gradeToSign, int gradeToExecute, std::s
 // Copy constructor
 AForm::AForm(AForm const &other) 
 	:	_name(other._name),
-		_signed(other._signed),
+		_isSigned(other._isSigned),
 		_gradeToSign(other._gradeToSign),
 		_gradeToExecute(other._gradeToExecute),
 		_target(other._target) {}
@@ -30,9 +30,9 @@ AForm::AForm(AForm const &other)
 // Copy assignment operator
 AForm &AForm::operator=(AForm const &other) {
 	if (this != &other) {
-		_signed = other._signed;
+		_isSigned = other._isSigned;
 	}
-	return (*this);
+	return *this;
 }
 
 // Destructor
@@ -56,7 +56,7 @@ int AForm::getGradeToExecute() const {
 }
 
 std::string const AForm::getTarget() const {
-	return (_target);
+	return _target;
 }
 
 // Member function to sign the form

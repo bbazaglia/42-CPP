@@ -24,7 +24,7 @@ public:
     // Member Functions
     void incrementGrade();
     void decrementGrade();
-    void signForm(Form &form);
+    void signForm(AForm &form);
     void executeForm(AForm const & form);
 
     // Exceptions

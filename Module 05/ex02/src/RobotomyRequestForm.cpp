@@ -1,8 +1,12 @@
 #include "RobotomyRequestForm.hpp"
 
+// Default constructor
+RobotomyRequestForm::RobotomyRequestForm() 
+    : AForm("RobotomyRequestForm", 72, 45, "unknown") {}
+
 // Parameterized constructor
 RobotomyRequestForm::RobotomyRequestForm(std::string const target) 
-    : AForm("Robotomy Request", 72, 45), _target(target) {}
+    : AForm("RobotomyRequestForm", 72, 45, target) {}
 
 // Copy constructor
 RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &other) 
@@ -23,8 +27,8 @@ RobotomyRequestForm::~RobotomyRequestForm() {}
 void RobotomyRequestForm::executeAction() const {
     std::cout << "Drilling noises..." << std::endl;
     if (std::rand() % 2 == 0) {
-        std::cout << _target << " has been robotomized successfully." << std::endl;
+        std::cout << getTarget() << " has been robotomized successfully." << std::endl;
     } else {
-        std::cout << "The robotomy on " << _target << " failed." << std::endl;
+        std::cout << "The robotomy on " << getTarget() << " failed." << std::endl;
     }
 }

@@ -20,7 +20,6 @@ Bureaucrat::Bureaucrat(const Bureaucrat& other) : _name(other._name), _grade(oth
 // Copy assignment operator
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) {
     if (this != &other) {
-        // _name is const, cannot be reassigned
         _grade = other._grade; 
     }
     return *this;
@@ -63,12 +62,21 @@ void Bureaucrat::decrementGrade() {
     }
 }
 
-void Bureaucrat::signForm(Form &form) {
+void Bureaucrat::signForm(AForm &form) {
     try {
         form.beSigned(*this);
         std::cout << _name << " signed " << form.getName() << std::endl;
     } catch (const std::exception &e) {
         std::cout << _name << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
+    }
+}
+
+void Bureaucrat::executeForm(AForm const & form) {
+    try {
+        form.execute(*this);
+        std::cout << _name << " executed " << form.getName() << std::endl;
+    } catch (const std::exception &e) {
+        std::cout << _name << " couldn't execute " << form.getName() << " because " << e.what() << std::endl;
     }
 }
 

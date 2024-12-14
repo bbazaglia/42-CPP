@@ -1,18 +1,21 @@
 #include "PresidentialPardonForm.hpp"
 
+// Default constructor
+PresidentialPardonForm::PresidentialPardonForm() 
+    : AForm("PresidentialPardonForm", 25, 5, "unknown") {}
+
 // Parameterized constructor
 PresidentialPardonForm::PresidentialPardonForm(std::string const target) 
-    : AForm("Presidential Pardon", 25, 5), _target(target) {}
+    : AForm("PresidentialPardonForm", 25, 5, target) {}
 
 // Copy constructor
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &other) 
-    : AForm(other), _target(other._target) {}
+    : AForm(other) {}
 
 // Copy assignment operator
 PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm const &other) {
     if (this != &other) {
         AForm::operator=(other);
-        _target = other._target;
     }
     return *this;
 }
@@ -22,5 +25,5 @@ PresidentialPardonForm::~PresidentialPardonForm() {}
 
 // Member function to execute the action
 void PresidentialPardonForm::executeAction() const {
-    std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+    std::cout << getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }
