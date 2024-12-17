@@ -40,3 +40,7 @@ int main() {
 
     return 0;
 }
+
+/* Note: AForm is not being directly instatiated.
+Instead, instances of derived classes are created though the Intern class's makeForm method, 
+which returns a pointer to the base class AForm. */
