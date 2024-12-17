@@ -41,4 +41,4 @@ private:
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
 
-#endif // BUREAUCRAT_HPP
+#endif 

@@ -14,7 +14,7 @@ int main() {
         // Decrement grade within valid range
         john.decrementGrade();
         std::cout << "After decrementing grade: " << john << std::endl;
-
+        
         // Attempt to create a Bureaucrat with a grade too high
         try {
             Bureaucrat alice("Alice", 0);
@@ -35,6 +35,13 @@ int main() {
         jane.incrementGrade();
         std::cout << "After incrementing grade: " << jane << std::endl;
         jane.incrementGrade(); // This should trigger an exception
+
+        // Increment grade to trigger GradeTooLowException
+        Bureaucrat mark("Mark", 149);
+        std::cout << mark << std::endl;
+        mark.decrementGrade();
+        std::cout << "After incrementing grade: " << mark << std::endl;
+        mark.decrementGrade(); // This should trigger an exception
 
     } catch (const std::exception& e) {
         std::cerr << "Unexpected exception: " << e.what() << std::endl;

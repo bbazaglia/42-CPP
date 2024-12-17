@@ -19,7 +19,6 @@ Bureaucrat::Bureaucrat(const Bureaucrat& other) : _name(other._name), _grade(oth
 // Copy assignment operator
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) {
     if (this != &other) {
-        // _name is const, cannot be reassigned
         _grade = other._grade; 
     }
     return *this;
