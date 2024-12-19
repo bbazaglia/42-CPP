@@ -1,3 +1,22 @@
+#include <iostream>
+#include "ScalarConverter.hpp"
+
+int main() {
+    std::string input;
+
+    while (true) {
+        std::cout << "Enter a literal (or type 'exit' to quit): ";
+        std::cin >> input;
+
+        if (input == "exit")
+            break;
+
+        ScalarConverter::convert(input);
+    }
+
+    return 0;
+}
+
 /* types of casting
  * dynamic_cast
 Use dynamic_cast for safe downcasting of polymorphic objects in an inheritance hierarchy (when you have virtual functions).
