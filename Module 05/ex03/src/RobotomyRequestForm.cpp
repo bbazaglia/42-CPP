@@ -25,6 +25,7 @@ RobotomyRequestForm::~RobotomyRequestForm() {}
 
 // Member function to execute the action
 void RobotomyRequestForm::executeAction() const {
+    std::srand(std::time(0)); // Seed the random number generator
     std::cout << "Drilling noises..." << std::endl;
     if (std::rand() % 2 == 0) {
         std::cout << getTarget() << " has been robotomized successfully." << std::endl;
