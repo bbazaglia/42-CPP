@@ -4,6 +4,9 @@
 #include <sstream>
 #include <cctype> 
 #include <limits>  
+#include <cerrno>
+# include <cstdlib>
+
 
 class LiteralValidator {
 public:

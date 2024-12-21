@@ -4,7 +4,6 @@
 #include "LiteralValidator.hpp"
 #include <string>
 #include <iostream>
-#include <limits>
 #include <cstdlib>
 
 class ScalarConverter {

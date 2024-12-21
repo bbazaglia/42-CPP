@@ -1,7 +1,7 @@
 #include "LiteralValidator.hpp"
 
 bool LiteralValidator::isCharLiteral(const std::string &input) {
-    return input.length() == 3 && input[0] == '\'' && input[2] == '\'' && isprint(input[1]);
+    return input.length() == 1 && isprint(input[0]) && !isdigit(input[0]);
 }
 
 bool LiteralValidator::isIntLiteral(const std::string &input) {
@@ -9,11 +9,12 @@ bool LiteralValidator::isIntLiteral(const std::string &input) {
         return false;
 
     // Manually convert string to integer
-    std::stringstream numStream(input);
+    std::stringstream numStream(input); 
     int value;
     numStream >> value;
 
-    // Check if there are any characters left in the buffer after the extraction
+    // in_avail() returns the number of characters available for reading in the buffer
+    // if there are remaining characters, the input strig was not fully consumed
     if (numStream.fail() || numStream.rdbuf()->in_avail() != 0) {
         return false;
     }
@@ -35,12 +36,19 @@ bool LiteralValidator::isFloatLiteral(const std::string &input) {
 
 bool LiteralValidator::isDoubleLiteral(const std::string &input) {
     char* end;
-	errno = 0;
-	strtod(input.c_str(), &end);
 
-	if (errno == ERANGE || end == input.c_str() || *end != '\0') {
-		return (false);
-	}
+    errno = 0; // Reset errno to 0 before calling strtod to clear any previous errors
 
-	return (true);
+    // strtod converts the initial part of the string to a double and sets 'end' to point to the first character after the number
+    strtod(input.c_str(), &end);
+
+    // Check for conversion errors
+    // errno == ERANGE: Check if the conversion resulted in an overflow or underflow
+    // end == input.c_str(): Check if no characters were converted, meaning the input string did not start with a valid number
+    // *end != '\0': Check if there are any characters left in the string after the number
+    if (errno == ERANGE || end == input.c_str() || *end != '\0') {
+        return (false); 
+    }
+
+    return (true);
 }
