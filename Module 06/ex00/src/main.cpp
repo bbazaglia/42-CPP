@@ -1,21 +1,19 @@
 #include <iostream>
 #include "ScalarConverter.hpp"
 
-int main() {
-    std::string input;
-
-    while (true) {
-        std::cout << "Enter a literal (or type 'exit' to quit): ";
-        std::cin >> input;
-
-        if (input == "exit")
-            break;
-
-        ScalarConverter::convert(input);
-    }
-
-    return 0;
+int main(int argc, char **argv) {
+    if (argc != 2) {
+		std::cout << "Usage: ./convert [value]" << std::endl;
+		return (1);
+	}
+	
+	std::string input = argv[1];
+	ScalarConverter::convert(input);
+	
+    return (0);
 }
+
+   
 
 /* types of casting
  * dynamic_cast

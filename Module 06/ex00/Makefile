@@ -1,4 +1,4 @@
-NAME = literals
+NAME = convert
 
 CC = c++
 CFLAGS = -std=c++98 -Wall -Werror -Wextra 
@@ -7,6 +7,7 @@ INCLUDES = -I include
 VPATH = src
 FILES = main.cpp \
 		ScalarConverter.cpp \
+		SafeConverter.cpp \
 		LiteralValidator.cpp
 				
 OBJS = $(FILES:%.cpp=$(OBJ_DIR)/%.o)
