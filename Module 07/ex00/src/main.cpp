@@ -20,6 +20,15 @@ int	main(void)
 	std::cout << "max( c, d ) = " << ::max(c, d) << std::endl;
 	std::cout << "-------------------" << std::endl;
 
+	// Example usage with different strings
+	std::string str1 = "baaa";
+	std::string str2 = "abbbb";
+	::swap(str1, str2);
+	std::cout << "str1 = " << str1 << ", str2 = " << str2 << std::endl;
+	std::cout << "min( str1, str2 ) = " << ::min(str1, str2) << std::endl;
+	std::cout << "max( str1, str2 ) = " << ::max(str1, str2) << std::endl;
+	std::cout << "-------------------" << std::endl;
+
 	// Example usage with doubles
     double e = 3.14;
 	double f = 2.71;
