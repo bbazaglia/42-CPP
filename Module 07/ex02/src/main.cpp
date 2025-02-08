@@ -16,6 +16,7 @@ int main() {
     }
     std::cout << "--------------------------" << std::endl;
     
+
     std::cout << "Test 2: Construction with a specified number of elements (5 elements)" << std::endl;
     Array<int> arr2(5);
     std::cout << "arr2 size: " << arr2.size() << std::endl;  // Should output 5
@@ -33,6 +34,7 @@ int main() {
     std::cout << std::endl;
     std::cout << "--------------------------" << std::endl;
 
+
     std::cout << "Test 3: Test copy constructor" << std::endl;
     Array<int> arr3 = arr2;  // Copy constructor
     std::cout << "arr3 size: " << arr3.size() << std::endl;  // Should output 5
@@ -41,8 +43,9 @@ int main() {
         std::cout << arr3[i] << " ";
     }
     std::cout << std::endl;
+
+
     std::cout << "--------------------------" << std::endl;
-    
     std::cout << "Test 4: Test deep copy" << std::endl;
     // Modify the original array (arr2)
     arr2[0] = 0; 
@@ -75,16 +78,16 @@ int main() {
         std::cout << arr3[i] << " ";
     }
     std::cout << std::endl;
-
-
     std::cout << "--------------------------" << std::endl;
+
+
     std::cout << "Test 5: Test assignment operator" << std::endl;
     Array<int> arr4(3);
     arr4[0] = 100;
     arr4[1] = 200;
     arr4[2] = 300;
 
-    arr3 = arr4;  // Use the assignment operator
+    arr3 = arr4; 
     std::cout << "arr3 after assignment from arr4: ";
     for (unsigned int i = 0; i < arr3.size(); ++i) {
         std::cout << arr3[i] << " ";
@@ -92,6 +95,7 @@ int main() {
     std::cout << std::endl;
     std::cout << "--------------------------" << std::endl;
     
+
     std::cout << "Test 6: Handling out-of-bounds access with exception" << std::endl;
     try {
         std::cout << "Trying to access out-of-bounds element in arr2: ";
@@ -101,6 +105,7 @@ int main() {
     }
     std::cout << "--------------------------" << std::endl;
     
+
     std::cout << "Test 7: Test with a double type" << std::endl;
     Array<double> arr5(4);
     for (unsigned int i = 0; i < arr5.size(); ++i) {
@@ -115,6 +120,7 @@ int main() {
     std::cout << std::endl;
     std::cout << "--------------------------" << std::endl;
 
+
     std::cout << "Test 8: Test with a string type" << std::endl;
     Array<std::string> arr6(3);  
     arr6[0] = "Test";
@@ -127,6 +133,46 @@ int main() {
         std::cout << arr6[i] << " ";
     }
     std::cout << std::endl;
+    std::cout << "--------------------------" << std::endl;
+
+
+    std::cout << "Test 9: Assign arrays with different sizes" << std::endl;
+    Array<std::string> arr7(8);  
+    arr7[0] = "So";
+    arr7[1] = "Long";
+    arr7[2] = "And";
+    arr7[3] = "Thanks";
+    arr7[4] = "For";
+    arr7[5] = "All";
+    arr7[6] = "The";
+    arr7[7] = "Fish";
+
+    std::cout << "arr7 size: " << arr7.size() << std::endl;
+    std::cout << "arr7 elements: ";
+    for (unsigned int i = 0; i < arr7.size(); ++i) {
+        std::cout << arr7[i] << " ";
+    }
+    std::cout << std::endl;
+
+    Array<std::string> arr8(3);  
+    arr8[0] = "So";
+    arr8[1] = "Long";
+    arr8[2] = "London";
+
+    std::cout << "arr8 size: " << arr8.size() << std::endl;
+    std::cout << "arr8 elements: ";
+    for (unsigned int i = 0; i < arr8.size(); ++i) {
+        std::cout << arr8[i] << " ";
+    }
+    std::cout << std::endl;
+
+    arr8 = arr7; 
+    std::cout << "arr8 after assignment from arr7: ";
+    for (unsigned int i = 0; i < arr8.size(); ++i) {
+        std::cout << arr8[i] << " ";
+    }
+    std::cout << std::endl;
+
 
     return 0;
 }
