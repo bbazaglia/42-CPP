@@ -4,6 +4,8 @@
 #include <iostream>
 #include <stack>
 
+// reference: https://en.cppreference.com/w/cpp/container/stack
+
 template <typename T>
 class MutantStack : public std::stack<T>
 {
@@ -18,3 +20,4 @@ class MutantStack : public std::stack<T>
 };
 
 #endif
+
