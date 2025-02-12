@@ -5,8 +5,7 @@ CFLAGS = -std=c++98 -Wall -Werror -Wextra
 INCLUDES = -I include
 
 VPATH = src
-FILES = main.cpp \
-		MutantStack.cpp
+FILES = main.cpp 
 				
 OBJS = $(FILES:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR = obj
