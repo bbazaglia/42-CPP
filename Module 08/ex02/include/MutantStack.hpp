@@ -47,4 +47,58 @@ public:
     const_reverse_iterator rend() const { return this->c.rend(); }
 };
 
+// Helper function to iterate over the stack
+template <typename Container>
+void iterateAndPrint(MutantStack<int, Container>& mstack) {
+    std::cout << "Iterating through container:" << std::endl;
+    for (typename MutantStack<int, Container>::iterator it = mstack.begin(); it != mstack.end(); ++it) {
+        std::cout << *it << " ";
+    }
+
+    std::cout << "\nIterating through container in reverse:" << std::endl;
+    for (typename MutantStack<int, Container>::reverse_iterator rit = mstack.rbegin(); rit != mstack.rend(); ++rit) {
+        std::cout << *rit << " ";
+    }
+
+    std::cout << "\nIterating through container with const_iterator:" << std::endl;
+    for (typename MutantStack<int, Container>::const_iterator cit = mstack.begin(); cit != mstack.end(); ++cit) {
+        std::cout << *cit << " ";
+    }
+
+    std::cout << "\nIterating through container with const_reverse_iterator:" << std::endl;
+    for (typename MutantStack<int, Container>::const_reverse_iterator crit = mstack.rbegin(); crit != mstack.rend(); ++crit) {
+        std::cout << *crit << " ";
+    }
+    std::cout << std::endl;
+}
+
+// Template function to test any container type with MutantStack
+template <typename Container>
+void testContainer(const std::string& containerName) {
+    MutantStack<int, Container> mstack;
+    
+    mstack.push(1);
+    mstack.push(2);
+    mstack.push(3);
+    mstack.push(4);
+    mstack.push(5);
+    mstack.push(6);
+    
+    std::cout << "\n------- Testing MutantStack with " << containerName << " -------" << std::endl;
+    iterateAndPrint(mstack);
+    std::cout << std::endl;
+}
+
+// Helper function to print the content of any stack
+template <typename T>
+void printStackContent(const MutantStack<T>& mstack, const std::string& stackName) {
+    std::cout << "Content of " << stackName << ":" << std::endl;
+        for (typename MutantStack<T>::const_iterator it = mstack.begin(); it != mstack.end(); ++it) {
+        std::cout << *it << " ";
+    }
+
+    std::cout << std::endl;
+}
+
+
 #endif
