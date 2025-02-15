@@ -2,8 +2,6 @@
 #define EASYFIND_HPP
 
 #include <iostream>
-#include <vector>
-#include <list>
 #include <algorithm>
 #include <stdexcept>
 
@@ -26,6 +24,15 @@ void testEasy(T& container, int value) {
     }
 }
 
+template <typename T>
+void printContainer(const T& container) {
+    typename T::const_iterator it;
+    for (it = container.begin(); it != container.end(); ++it) {
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
+}
+
 #endif
 
 
@@ -44,12 +51,17 @@ void testEasy(T& container, int value) {
     * std::stack – provides LIFO access to elements.
     * std::queue – provides FIFO access to elements.
     * std::priority_queue – provides access to the largest/greatest element.
-    
-STL containers use iterators to traverse elements.
-std::vector<int> v = {10, 20, 30};
-std::vector<int>::iterator it;
 
-for (it = v.begin(); it != v.end(); ++it) {
-    std::cout << *it << " ";  // Output: 10 20 30
+
+ *  About iterators:
+    Iterator is an abstract object that provides a uniform interface for traversing containers. 
+    It behaves like a pointer in terms of accessing and iterating over elements, but it can be more flexible and designed to work with any container type.
+
+    STL containers use iterators to traverse elements.      
+    std::vector<int> v = {10, 20, 30};
+    std::vector<int>::iterator it;
+
+    for (it = v.begin(); it != v.end(); ++it) {
+        std::cout << *it << " ";  // Output: 10 20 30
 }
 */

@@ -8,6 +8,8 @@
 #include <cstdlib> 
 #include <ctime>
 
+// Reference: https://en.cppreference.com/w/cpp/container/vector
+
 class Span {
 private:
     unsigned int _size;
