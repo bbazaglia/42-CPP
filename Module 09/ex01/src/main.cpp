@@ -1,19 +1,14 @@
-#include "BitcoinExchange.hpp"
+#include "RPN.hpp"
 
-int main(int argc, char* argv[]) {
-    if (argc != 2) {
-        std::cerr << "Usage: ./btc [filename]" << std::endl;
+int main(int argc, char **argv) {
+    if (argc != 2)
+    {
+        std::cerr << "Usage: ./RPN [inverted Polish mathematical expression]" << std::endl;
         return 1;
     }
 
-    BitcoinExchange exchange;
+    /* Using a stack as our container:
+        LIFO (Last-In-First-Out) matches how RPN operators work on recent operands
+        Naturally handles the sequential processing of the expression */
 
-    if (!exchange.loadDatabase("data.csv")) {
-        std::cerr << "Error: could not open database file." << std::endl;
-        return 1;
-    }
-
-    exchange.processInput(argv[1]);
-
-    return 0;
-}
+} 
