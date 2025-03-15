@@ -3,6 +3,9 @@
 
 #include <stack>
 #include <deque>
+#include <list>
+#include <vector>
+#include <typeinfo>
 
 // reference: https://en.cppreference.com/w/cpp/container/stack
 // reference: https://en.cppreference.com/w/cpp/container/deque
@@ -72,11 +75,23 @@ void iterateAndPrint(MutantStack<int, Container>& mstack) {
     std::cout << std::endl;
 }
 
+// Function to get readable container type name
+std::string getReadableContainerName(const std::string& mangledName) {
+    if (mangledName == typeid(std::deque<int>).name()) {
+        return "deque";
+    } else if (mangledName == typeid(std::list<int>).name()) {
+        return "list";
+    } else if (mangledName == typeid(std::vector<int>).name()) {
+        return "vector";
+    } else {
+        return "unknown";
+    }
+}
+
 // Template function to test any container type with MutantStack
 template <typename Container>
 void testContainer(const std::string& containerName) {
     MutantStack<int, Container> mstack;
-    
     mstack.push(1);
     mstack.push(2);
     mstack.push(3);
@@ -87,6 +102,7 @@ void testContainer(const std::string& containerName) {
     std::cout << "\n------- Testing MutantStack with " << containerName << " -------" << std::endl;
     iterateAndPrint(mstack);
     std::cout << std::endl;
+    std::cout << "Container type: " << getReadableContainerName(typeid(Container).name()) << std::endl;
 }
 
 // Helper function to print the content of any stack
