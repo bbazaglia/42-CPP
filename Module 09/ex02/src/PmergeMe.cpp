@@ -55,6 +55,8 @@ void PmergeMe::parseArguments(int argc, char* argv[]) {
 
         // m_originalSequence contains the input sequence provided by the user
         m_originalSequence.push_back(static_cast<int>(num));
+
+        // std::cout << "Added " << num << " to m_originalSequence" << std::endl;
     }
 }
 
@@ -81,6 +83,9 @@ std::vector<size_t> PmergeMe::generateJacobsthalNumbers(size_t n) const {
             break;
 
         jacobsthal.push_back(next);
+
+        // std::cout << "Generated Jacobsthal number: " << next << std::endl;
+
         i++;
     }
 

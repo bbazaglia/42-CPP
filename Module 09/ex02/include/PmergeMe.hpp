@@ -41,6 +41,22 @@ public:
     double getDequeTime() const;
 };
 
+
+template <typename T1, typename T2>
+std::ostream& operator<<(std::ostream& os, const std::pair<T1, T2>& p) {
+    os << "(" << p.first << ", " << p.second << ")";
+    return os;
+} 
+
+template <typename Container>
+void print_container(Container& container) {
+	for (typename Container::iterator it = container.begin(); it != container.end(); it++) {
+		std::cout << *it << " ";
+	}
+	std::cout << std::endl;
+}
+
+
 template <typename Container>
 void PmergeMe::fordJohnsonSort(Container &arr) {
     const size_t size = arr.size();
@@ -62,6 +78,7 @@ void PmergeMe::fordJohnsonSort(Container &arr) {
         if (first > second)
             std::swap(first, second);
         pairs.push_back(std::make_pair(first, second));
+        std::cout << "Created pair: (" << first << ", " << second << ")" << std::endl;
     }
 
     // Step 2: Extract larger elements for recursive sorting
@@ -70,6 +87,7 @@ void PmergeMe::fordJohnsonSort(Container &arr) {
         largerElements.push_back(pairs[i].second);
     }
 
+    std::cout << "recursion now" << std::endl;
     // Recursively sort the larger elements
     fordJohnsonSort(largerElements);
 
@@ -95,16 +113,25 @@ void PmergeMe::fordJohnsonSort(Container &arr) {
     sortedArr.push_back(pairs[pairIndices[0]].first);
     sortedArr.push_back(pairs[pairIndices[0]].second);
 
+    std::cout << "Initialized sorted array with first pair: (" 
+              << pairs[pairIndices[0]].first << ", " 
+              << pairs[pairIndices[0]].second << ")" << std::endl;
+
+
     // Insert all remaining larger elements in the main chain
     for (size_t i = 1; i < largerElements.size(); ++i) {
         sortedArr.push_back(largerElements[i]);
     }
+    std::cout << "Main chain: " << std::endl;
+    print_container(sortedArr);
 
     // Create pending insertions list
     std::vector<std::pair<int, size_t> > pendingElements;
     for (size_t i = 1; i < pairs.size(); ++i) {
         pendingElements.push_back(std::make_pair(pairs[pairIndices[i]].first, i));
     }
+    std::cout << "Pending Elements: " << std::endl;
+    print_container(pendingElements);
 
     // Get the Jacobsthal insertion sequence
     std::vector<size_t> insertionSequence = getInsertionSequence(pendingElements.size());
@@ -132,6 +159,7 @@ void PmergeMe::fordJohnsonSort(Container &arr) {
             }
 
             sortedArr.insert(lower, valueToInsert);
+            std::cout << "Inserted " << valueToInsert << " into sorted array." << std::endl;
         }
     }
 
@@ -153,6 +181,7 @@ void PmergeMe::fordJohnsonSort(Container &arr) {
         }
 
         sortedArr.insert(lower, oddNum);
+        std::cout << "Inserted " << oddNum << " into sorted array." << std::endl;
     }
 
     // Copy sorted array back to original
