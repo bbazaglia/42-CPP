@@ -29,44 +29,35 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &other) {
     return *this;
 }
 
-bool PmergeMe::isPositiveInteger(const std::string &str) const {
-    if (str.empty())
-        return false;
-
-    for (size_t i = 0; i < str.length(); i++) {
-        if (!isdigit(str[i]))
-            return false;
-    }
-    return true;
-}
-
-bool PmergeMe::parseArguments(int argc, char *argv[]) {
+void PmergeMe::parseArguments(int argc, char* argv[]) {
     m_originalSequence.clear();
+
+    if (argc < 2) {
+        std::cerr << "Usage: " << argv[0] << " [positive integers...]" << std::endl;
+        std::exit(1);
+    }
 
     for (int i = 1; i < argc; i++) {
         std::string arg(argv[i]);
 
-        if (!isPositiveInteger(arg)) {
-            std::cerr << "Error" << std::endl;
-            return false;
+        for (size_t j = 0; j < arg.length(); ++j) {
+            if (!std::isdigit(arg[j])) {
+                std::cerr << "Error: Invalid input '" << arg << "'. Expected a positive integer." << std::endl;
+                std::exit(1);
+            }
         }
 
-        long num = atol(arg.c_str());
-        if (num > INT_MAX || num < 0) {
-            std::cerr << "Error" << std::endl;
-            return false;
+        long num = std::atol(arg.c_str());
+        if (num > INT_MAX) {
+            std::cerr << "Error: " << num << " exceeds INT_MAX." << std::endl;
+            std::exit(1);
         }
 
+        // m_originalSequence contains the input sequence provided by the user
         m_originalSequence.push_back(static_cast<int>(num));
     }
-
-    if (m_originalSequence.empty()) {
-        std::cerr << "Error" << std::endl;
-        return false;
-    }
-
-    return true;
 }
+
 
 // Generate Jacobsthal numbers up to n
 std::vector<size_t> PmergeMe::generateJacobsthalNumbers(size_t n) const {

@@ -29,7 +29,7 @@ public:
     PmergeMe &operator=(const PmergeMe &other);
     ~PmergeMe();
 
-    bool parseArguments(int argc, char *argv[]);
+    void parseArguments(int argc, char *argv[]);
     void sort();
     void displayResults() const;
 
@@ -52,9 +52,8 @@ void PmergeMe::fordJohnsonSort(Container &arr) {
     bool isOdd = (size % 2 != 0);
     int oddNum = 0;
 
-    if (isOdd) {
+    if (isOdd) 
         oddNum = arr[size - 1];
-    }
 
     // Create pairs and ensure smaller is first, larger is second
     for (size_t i = 0; i < size - isOdd; i += 2) {
