@@ -60,6 +60,9 @@ bool RPN::_processToken(std::stack<int> &stack, const std::string &token) {
             return false;  // invalid token
         }
     }
+    else {
+        return false;
+    }
 
     return true;
 }

@@ -4,6 +4,7 @@
 #include <climits>
 #include <ctime>
 #include <cstdlib>
+#include <cmath>
 
 std::size_t PmergeMe::_jacobsthal_cache[62] = {0};
 
@@ -29,14 +30,14 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &other)
 
 PmergeMe::~PmergeMe() {}
 
-void PmergeMe::parseArguments(int argc, char *argv[])
+bool PmergeMe::parseArguments(int argc, char *argv[])
 {
     original_sequence.clear();
 
     if (argc < 2)
     {
         std::cerr << "Usage: " << argv[0] << " [positive integers...]" << std::endl;
-        std::exit(1);
+        return false;
     }
 
     for (int i = 1; i < argc; i++)
@@ -48,7 +49,7 @@ void PmergeMe::parseArguments(int argc, char *argv[])
             if (!std::isdigit(arg[j]))
             {
                 std::cerr << "Error: Invalid input '" << arg << "'. Expected a positive integer." << std::endl;
-                std::exit(1);
+                return false;
             }
         }
 
@@ -56,11 +57,13 @@ void PmergeMe::parseArguments(int argc, char *argv[])
         if (num > INT_MAX)
         {
             std::cerr << "Error: " << num << " exceeds INT_MAX." << std::endl;
-            std::exit(1);
+            return false;
         }
 
         original_sequence.push_back(static_cast<int>(num));
     }
+
+    return true;
 }
 
 std::size_t PmergeMe::_calculate_jacobsthal_number(std::size_t n)

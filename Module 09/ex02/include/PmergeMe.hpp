@@ -47,7 +47,7 @@ public:
 
     static int comparison_counter;
 
-    void parseArguments(int argc, char *argv[]);
+    bool parseArguments(int argc, char *argv[]);
     void sort();
     void displayResults() const;
 };
